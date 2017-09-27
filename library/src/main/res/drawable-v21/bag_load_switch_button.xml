@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#ff888888">
+    <!--显示默认的 drawable-->
+    <item android:drawable="@drawable/bag_load_switch_button_" />
+
+    <!--匹配默认值的波纹效果剪切遮罩-->
+    <item
+        android:id="@android:id/mask"
+        android:drawable="@drawable/bag_load_switch_button_mask" />
+</ripple>
