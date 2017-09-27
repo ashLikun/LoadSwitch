@@ -10,7 +10,7 @@ import android.view.ViewGroup;
  * 作者　　: 李坤
  * 创建时间: 17:07 Administrator
  * 邮箱　　：496546144@qq.com
- *
+ * <p>
  * 功能介绍：初始化
  * LoadingAndRetryManager.BASE_EMPTY_LAYOUT_ID = R.layout.base_load_empty;
  * LoadingAndRetryManager.BASE_RETRY_LAYOUT_ID = R.layout.base_load_retry;
@@ -58,14 +58,13 @@ public class LoadSwitchService {
         }
     };
 
-    public static LoadSwitchService getLoadingAndRetryManager(Object activityOrFragmentOrView, OnLoadLayoutListener listener) {
-        if (activityOrFragmentOrView != null) {
-            return new LoadSwitchService(activityOrFragmentOrView, listener);
-        }
+    public static LoadSwitchService generate(Object activityOrFragment, OnLoadLayoutListener listener) {
+        if (activityOrFragment != null)
+            return new LoadSwitchService(activityOrFragment, listener);
         return null;
     }
 
-    public LoadSwitchService(Object activityOrFragmentOrView, OnLoadLayoutListener listener) {
+    private LoadSwitchService(Object activityOrFragmentOrView, OnLoadLayoutListener listener) {
         if (listener == null) listener = DEFAULT_LISTENER;
 
         ViewGroup contentParent = null;
@@ -159,9 +158,6 @@ public class LoadSwitchService {
         }
     }
 
-    public static LoadSwitchService generate(Object activityOrFragment, OnLoadLayoutListener listener) {
-        return new LoadSwitchService(activityOrFragment, listener);
-    }
 
     public void showLoading(ContextData data) {
         if (loadingCanShow)
