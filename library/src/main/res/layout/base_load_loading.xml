@@ -12,7 +12,10 @@
         android:layout_width="46dp"
         android:layout_height="46dp"
         android:layout_alignParentBottom="true"
-        android:indeterminate="true" />
+        android:indeterminate="true"
+        app:mpb_indeterminateTint="?colorPrimary"
+        app:mpb_progressTint="?colorPrimary"
+        app:mpb_secondaryProgressTint="?colorPrimary" />
 
     <TextView
         android:id="@+id/content"
