@@ -15,9 +15,7 @@ import android.widget.FrameLayout;
  * 邮箱　　：496546144@qq.com
  * <p>
  * 功能介绍：
- *
  */
-
 public class LoadSwitchLayou extends FrameLayout {
     private View mLoadingView;
     private View mRetryView;
@@ -104,44 +102,56 @@ public class LoadSwitchLayou extends FrameLayout {
 
 
     private void showView(View view, ContextData data) {
-        if (view == null) return;
-
+        if (view == null) {
+            return;
+        }
         if (view == mLoadingView) {
             mLoadingView.setVisibility(View.VISIBLE);
-            if (mRetryView != null)
+            if (mRetryView != null) {
                 mRetryView.setVisibility(View.GONE);
-            if (mContentView != null)
+            }
+            if (mContentView != null) {
                 mContentView.setVisibility(View.GONE);
-            if (mEmptyView != null)
+            }
+            if (mEmptyView != null) {
                 mEmptyView.setVisibility(View.GONE);
-
+            }
             loadingAndRetryListener.setLoadingEvent(mLoadingView, data);
         } else if (view == mRetryView) {
             mRetryView.setVisibility(View.VISIBLE);
-            if (mLoadingView != null)
+            if (mLoadingView != null) {
                 mLoadingView.setVisibility(View.GONE);
-            if (mContentView != null)
+            }
+            if (mContentView != null) {
                 mContentView.setVisibility(View.GONE);
-            if (mEmptyView != null)
+            }
+            if (mEmptyView != null) {
                 mEmptyView.setVisibility(View.GONE);
+            }
             loadingAndRetryListener.setRetryEvent(mRetryView, data);
         } else if (view == mContentView) {
             mContentView.setVisibility(View.VISIBLE);
             mContentView.invalidate();
-            if (mLoadingView != null)
+            if (mLoadingView != null) {
                 mLoadingView.setVisibility(View.GONE);
-            if (mRetryView != null)
+            }
+            if (mRetryView != null) {
                 mRetryView.setVisibility(View.GONE);
-            if (mEmptyView != null)
+            }
+            if (mEmptyView != null) {
                 mEmptyView.setVisibility(View.GONE);
+            }
         } else if (view == mEmptyView) {
             mEmptyView.setVisibility(View.VISIBLE);
-            if (mLoadingView != null)
+            if (mLoadingView != null) {
                 mLoadingView.setVisibility(View.GONE);
-            if (mRetryView != null)
+            }
+            if (mRetryView != null) {
                 mRetryView.setVisibility(View.GONE);
-            if (mContentView != null)
+            }
+            if (mContentView != null) {
                 mContentView.setVisibility(View.GONE);
+            }
             loadingAndRetryListener.setEmptyEvent(mEmptyView, data);
         }
 

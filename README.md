@@ -4,6 +4,9 @@
 
 ### 1.用法
     //创建LoadSwitchService
+    loadSwitchService = LoadSwitchService.generate(getSwitchRoot(), new MyOnLoadLayoutListener(this, getOnLoadSwitchClick()));
+
+
      loadSwitchService = LoadSwitchService.generate(findViewById(R.id.switchRoot), new MyOnLoadLayoutListener(this, this));
            findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
                @Override
