@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "26.0.1"
+    buildToolsVersion "25.0.3"
     defaultConfig {
         applicationId "com.ashlikun.loadswitch.simple"
         minSdkVersion 14
@@ -15,6 +15,14 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+        maven {
+            url "https://jitpack.io"
         }
     }
 }
