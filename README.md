@@ -1,6 +1,28 @@
-# **LoadSwitch**
-加载中，加载为空，加载失败，之间的切换
 
+[![Release](https://jitpack.io/v/ashLikun/LoadSwitch.svg)](https://jitpack.io/#ashLikun/LoadSwitch)
+
+# **LoadSwitch**
+    加载中，加载为空，加载失败，之间的切换
+## 使用方法
+
+build.gradle文件中添加:
+```gradle
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+```
+并且:
+
+```gradle
+dependencies {
+    compile 'com.github.ashLikun:LoadSwitch:{latest version}'
+
+    compile 'me.zhanghai.android.materialprogressbar:library:1.4.2'
+    compile 'com.github.ashLikun.frame:flatbutton:2.0.6'
+}
+```
 
 ### 1.用法
     //创建LoadSwitchService
