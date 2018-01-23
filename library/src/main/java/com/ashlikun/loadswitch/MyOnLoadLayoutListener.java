@@ -16,7 +16,7 @@ import android.widget.TextView;
  */
 
 
-public class MyOnLoadLayoutListener extends OnLoadLayoutListener {
+public class MyOnLoadLayoutListener implements OnLoadLayoutListener {
     private Context context;
     private OnLoadSwitchClick clickListion;
 
@@ -44,23 +44,15 @@ public class MyOnLoadLayoutListener extends OnLoadLayoutListener {
                 img.setImageResource(data.getResId());
             }
         }
-
+        MyOnClickListener onClickListener = new MyOnClickListener(data);
         TextView butt = (TextView) retryView.findViewById(R.id.reSet);
         if (butt != null) {
             if (!TextUtils.isEmpty(data.getButtonText())) {
                 butt.setText(data.getButtonText());
             }
-            butt.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (clickListion != null) {
-                        clickListion.onRetryClick(data);
-                    }
-                }
-            });
+            butt.setOnClickListener(onClickListener);
         }
-
-
+        retryView.setOnClickListener(onClickListener);
     }
 
     @Override
@@ -94,19 +86,28 @@ public class MyOnLoadLayoutListener extends OnLoadLayoutListener {
             }
         }
         TextView butt = (TextView) emptyView.findViewById(R.id.reSet);
+        MyOnClickListener onClickListener = new MyOnClickListener(data);
         if (butt != null) {
             if (!TextUtils.isEmpty(data.getButtonText())) {
                 butt.setText(data.getButtonText());
             }
-            butt.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (clickListion != null) {
-                        clickListion.onEmptyClick(data);
-                    }
-                }
-            });
+            butt.setOnClickListener(onClickListener);
+        }
+        emptyView.setOnClickListener(onClickListener);
+    }
+
+    private class MyOnClickListener implements View.OnClickListener {
+        final ContextData data;
+
+        public MyOnClickListener(ContextData data) {
+            this.data = data;
         }
 
+        @Override
+        public void onClick(View v) {
+            if (clickListion != null) {
+                clickListion.onEmptyClick(data);
+            }
+        }
     }
 }

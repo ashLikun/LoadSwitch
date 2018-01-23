@@ -17,12 +17,11 @@ import android.widget.FrameLayout;
  * 功能介绍：
  */
 public class LoadSwitchLayou extends FrameLayout {
-    private View mLoadingView;
-    private View mRetryView;
-    private View mContentView;
-    private View mEmptyView;
-    private OnLoadLayoutListener loadingAndRetryListener;
-
+    private OnLoadLayoutListener listener;
+    private LoadSwitch.Builder builder;
+    //在content后面加的View位置
+    private static final int CALLBACK_CUSTOM_INDEX = 1;
+    public static final int NO_LAYOUT_ID = 0;
     private static final String TAG = LoadSwitchLayou.class.getSimpleName();
 
 
@@ -39,8 +38,12 @@ public class LoadSwitchLayou extends FrameLayout {
         this(context, null);
     }
 
-    public void setLoadingAndRetryListener(OnLoadLayoutListener loadingAndRetryListener) {
-        this.loadingAndRetryListener = loadingAndRetryListener;
+    public void setListener(OnLoadLayoutListener listener) {
+        this.listener = listener;
+    }
+
+    public void setBuilder(LoadSwitch.Builder builder) {
+        this.builder = builder;
     }
 
     private boolean isMainThread() {
@@ -49,12 +52,12 @@ public class LoadSwitchLayou extends FrameLayout {
 
     public void showLoading(final ContextData data) {
         if (isMainThread()) {
-            showView(mLoadingView, data);
+            showView(1, data);
         } else {
             post(new Runnable() {
                 @Override
                 public void run() {
-                    showView(mLoadingView, data);
+                    showView(1, data);
                 }
             });
         }
@@ -62,12 +65,12 @@ public class LoadSwitchLayou extends FrameLayout {
 
     public void showRetry(final ContextData data) {
         if (isMainThread()) {
-            showView(mRetryView, data);
+            showView(2, data);
         } else {
             post(new Runnable() {
                 @Override
                 public void run() {
-                    showView(mRetryView, data);
+                    showView(2, data);
                 }
             });
         }
@@ -76,12 +79,12 @@ public class LoadSwitchLayou extends FrameLayout {
 
     public void showContent() {
         if (isMainThread()) {
-            showView(mContentView, null);
+            showView(0, null);
         } else {
             post(new Runnable() {
                 @Override
                 public void run() {
-                    showView(mContentView, null);
+                    showView(0, null);
                 }
             });
         }
@@ -89,150 +92,114 @@ public class LoadSwitchLayou extends FrameLayout {
 
     public void showEmpty(final ContextData data) {
         if (isMainThread()) {
-            showView(mEmptyView, data);
+            showView(3, data);
         } else {
             post(new Runnable() {
                 @Override
                 public void run() {
-                    showView(mEmptyView, data);
+                    showView(3, data);
                 }
             });
         }
     }
 
-
-    private void showView(View view, ContextData data) {
-        if (view == null) {
-            return;
+    private void showView(int status, ContextData data) {
+        //清空后加的View
+        if (getChildCount() > CALLBACK_CUSTOM_INDEX) {
+            removeViewAt(CALLBACK_CUSTOM_INDEX);
         }
-        if (view == mLoadingView) {
-            mLoadingView.setVisibility(View.VISIBLE);
-            if (mRetryView != null) {
-                mRetryView.setVisibility(View.GONE);
-            }
-            if (mContentView != null) {
-                mContentView.setVisibility(View.GONE);
-            }
-            if (mEmptyView != null) {
-                mEmptyView.setVisibility(View.GONE);
-            }
-            loadingAndRetryListener.setLoadingEvent(mLoadingView, data);
-        } else if (view == mRetryView) {
-            mRetryView.setVisibility(View.VISIBLE);
-            if (mLoadingView != null) {
-                mLoadingView.setVisibility(View.GONE);
-            }
-            if (mContentView != null) {
-                mContentView.setVisibility(View.GONE);
-            }
-            if (mEmptyView != null) {
-                mEmptyView.setVisibility(View.GONE);
-            }
-            loadingAndRetryListener.setRetryEvent(mRetryView, data);
-        } else if (view == mContentView) {
-            mContentView.setVisibility(View.VISIBLE);
-            mContentView.invalidate();
-            if (mLoadingView != null) {
-                mLoadingView.setVisibility(View.GONE);
-            }
-            if (mRetryView != null) {
-                mRetryView.setVisibility(View.GONE);
-            }
-            if (mEmptyView != null) {
-                mEmptyView.setVisibility(View.GONE);
-            }
-        } else if (view == mEmptyView) {
-            mEmptyView.setVisibility(View.VISIBLE);
-            if (mLoadingView != null) {
-                mLoadingView.setVisibility(View.GONE);
-            }
-            if (mRetryView != null) {
-                mRetryView.setVisibility(View.GONE);
-            }
-            if (mContentView != null) {
-                mContentView.setVisibility(View.GONE);
-            }
-            loadingAndRetryListener.setEmptyEvent(mEmptyView, data);
+        if (getChildAt(0) != null) {
+            getChildAt(0).setVisibility(status == 0 ? VISIBLE : GONE);
         }
-
-
+        if (status == 1) {
+            if (listener != null) {
+                listener.setLoadingEvent(addLoadingLayout(), data);
+            } else {
+                addLoadingLayout();
+            }
+        } else if (status == 2) {
+            if (listener != null) {
+                listener.setRetryEvent(addRetryLayout(), data);
+            } else {
+                addRetryLayout();
+            }
+        } else if (status == 0) {
+            getChildAt(0).invalidate();
+        } else if (status == 3) {
+            if (listener != null) {
+                listener.setEmptyEvent(addEmptyLayout(), data);
+            } else {
+                addEmptyLayout();
+            }
+        }
     }
 
-    public View setContentView(int layoutId) {
-
-        return setContentView(LayoutInflater.from(getContext()).inflate(layoutId, this, false));
+    public View addOtherView(int layoutId) {
+        return addOtherView(LayoutInflater.from(getContext()).inflate(layoutId, this, false));
     }
 
-    public View setLoadingView(int layoutId) {
-        return setLoadingView(LayoutInflater.from(getContext()).inflate(layoutId, this, false));
-    }
-
-    public View setEmptyView(int layoutId) {
-        return setEmptyView(LayoutInflater.from(getContext()).inflate(layoutId, this, false));
-    }
-
-    public View setRetryView(int layoutId) {
-        return setRetryView(LayoutInflater.from(getContext()).inflate(layoutId, this, false));
-    }
-
-    public View setLoadingView(View view) {
-        View loadingView = mLoadingView;
-        if (loadingView != null) {
+    public View addOtherView(View view) {
+        if (view != null) {
             Log.w(TAG, "you have already set a loading view and would be instead of this new one.");
         }
-        removeView(loadingView);
+        removeView(view);
         addView(view);
-        mLoadingView = view;
-        return mLoadingView;
-    }
-
-    public View setEmptyView(View view) {
-        View emptyView = mEmptyView;
-        if (emptyView != null) {
-            Log.w(TAG, "you have already set a empty view and would be instead of this new one.");
-        }
-        removeView(emptyView);
-        addView(view);
-        mEmptyView = view;
-        return mEmptyView;
-    }
-
-    public View setRetryView(View view) {
-        View retryView = mRetryView;
-        if (retryView != null) {
-            Log.w(TAG, "you have already set a retry view and would be instead of this new one.");
-        }
-        removeView(retryView);
-        addView(view);
-        mRetryView = view;
-        return mRetryView;
-
-    }
-
-    public View setContentView(View view) {
-        View contentView = mContentView;
-        if (contentView != null) {
-            Log.w(TAG, "you have already set a retry view and would be instead of this new one.");
-        }
-        removeView(contentView);
-        addView(view);
-        mContentView = view;
-        return mContentView;
-    }
-
-    public View getRetryView() {
-        return mRetryView;
-    }
-
-    public View getLoadingView() {
-        return mLoadingView;
+        return view;
     }
 
     public View getContentView() {
-        return mContentView;
+        return getChildAt(0);
     }
 
-    public View getEmptyView() {
-        return mEmptyView;
+
+    //添加空布局
+    private View addEmptyLayout() {
+        if (builder.isSetEmptyLayout()) {
+            int layoutId = builder.generateEmptyLayoutId();
+            if (layoutId != NO_LAYOUT_ID) {
+                return addOtherView(layoutId);
+            } else {
+                return addOtherView(builder.generateEmptyLayout());
+            }
+        } else {
+            if (LoadSwitch.BASE_EMPTY_LAYOUT_ID != NO_LAYOUT_ID) {
+                return addOtherView(LoadSwitch.BASE_EMPTY_LAYOUT_ID);
+            }
+        }
+        return null;
+    }
+
+    //添加加载中布局
+    private View addLoadingLayout() {
+        if (builder.isSetLoadingLayout()) {
+            int layoutId = builder.generateLoadingLayoutId();
+            if (layoutId != NO_LAYOUT_ID) {
+                return addOtherView(layoutId);
+            } else {
+                return addOtherView(builder.generateLoadingLayout());
+            }
+        } else {
+            if (LoadSwitch.BASE_LOADING_LAYOUT_ID != NO_LAYOUT_ID) {
+                return addOtherView(LoadSwitch.BASE_LOADING_LAYOUT_ID);
+            }
+        }
+        return null;
+    }
+
+    //添加从新加载
+    private View addRetryLayout() {
+        if (builder.isSetRetryLayout()) {
+            int layoutId = builder.generateRetryLayoutId();
+            if (layoutId != NO_LAYOUT_ID) {
+                return addOtherView(layoutId);
+            } else {
+                return addOtherView(builder.generateRetryLayout());
+            }
+        } else {
+            if (LoadSwitch.BASE_RETRY_LAYOUT_ID != NO_LAYOUT_ID) {
+                return addOtherView(LoadSwitch.BASE_RETRY_LAYOUT_ID);
+            }
+        }
+        return null;
     }
 }
