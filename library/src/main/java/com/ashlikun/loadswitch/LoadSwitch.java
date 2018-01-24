@@ -12,9 +12,9 @@ import android.view.View;
  */
 
 public class LoadSwitch {
-    protected static int BASE_LOADING_LAYOUT_ID = R.layout.base_load_loading;
-    protected static int BASE_RETRY_LAYOUT_ID = R.layout.base_load_retry;
-    protected static int BASE_EMPTY_LAYOUT_ID = R.layout.base_load_empty;
+    public static int BASE_LOADING_LAYOUT_ID = R.layout.base_load_loading;
+    public static int BASE_RETRY_LAYOUT_ID = R.layout.base_load_retry;
+    public static int BASE_EMPTY_LAYOUT_ID = R.layout.base_load_empty;
     private static volatile LoadSwitch loadSir;
     private Builder builder;
 
