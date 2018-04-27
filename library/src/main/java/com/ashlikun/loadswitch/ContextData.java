@@ -1,10 +1,12 @@
 package com.ashlikun.loadswitch;
 
+import android.os.Bundle;
+
 /**
  * 作者　　: 李坤
  * 创建时间: 17:07 Administrator
  * 邮箱　　：496546144@qq.com
- *
+ * <p>
  * 功能介绍：布局切换时的内容数据
  */
 
@@ -20,6 +22,8 @@ public class ContextData {
 
     //按钮文字
     private String buttonText;
+    //扩展的其他数据
+    private Bundle extend;
 
     public ContextData() {
     }
@@ -91,5 +95,13 @@ public class ContextData {
 
     public void setButtonText(String buttonText) {
         this.buttonText = buttonText;
+    }
+
+    public Bundle getExtend() {
+        return extend;
+    }
+
+    public void setExtend(Bundle extend) {
+        this.extend = extend;
     }
 }

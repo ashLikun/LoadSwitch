@@ -30,12 +30,12 @@
         android:paddingRight="20dp"
         android:paddingTop="10dp"
         android:text="点击重试"
-        android:textColor="?colorPrimary"
+        android:textColor="@color/load_and_retry_button_color"
         app:colorNormal="#00000000"
         app:colorPressed="#ffcccccc"
         app:colorRipple="#ff888888"
         app:cornerRadius="6dp"
-        app:strokeColor="?colorPrimary"
+        app:strokeColor="@color/load_and_retry_button_strokecolor"
         app:strokeWidth="1dp"></com.ashlikun.flatbutton.FlatButton>
 
 

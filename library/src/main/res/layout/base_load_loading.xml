@@ -6,16 +6,17 @@
     android:gravity="center"
     android:orientation="vertical">
 
-
-    <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+    <com.ashlikun.circleprogress.CircleProgressView
         android:id="@+id/circleProgressBar"
         android:layout_width="46dp"
         android:layout_height="46dp"
-        android:layout_alignParentBottom="true"
-        android:indeterminate="true"
-        app:mpb_indeterminateTint="?colorPrimary"
-        app:mpb_progressTint="?colorPrimary"
-        app:mpb_secondaryProgressTint="?colorPrimary" />
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/tvLoadMore"
+        app:cpv_angleAnimationDurationMillis="@integer/circle_default_angleAnimationDuration"
+        app:cpv_borderWidth="2dp"
+        app:cpv_color="@color/load_and_retry_circle_color"
+        app:cpv_sweepAnimationDurationMillis="@integer/circle_default_sweepAnimationDuration" />
+
 
     <TextView
         android:id="@+id/content"
@@ -23,6 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="  载入中..."
-        android:textColor="?colorPrimary"
+        android:textColor="@color/load_and_retry_text_color"
         android:textSize="14sp" />
 </LinearLayout>

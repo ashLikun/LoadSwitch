@@ -18,19 +18,24 @@ public class LoadSwitch {
     private static volatile LoadSwitch loadSir;
     private Builder builder;
 
-    public static LoadSwitch getDefault() {
+    public static LoadSwitch get(Builder builder) {
         if (loadSir == null) {
             synchronized (LoadSwitch.class) {
                 if (loadSir == null) {
-                    loadSir = new LoadSwitch();
+                    loadSir = new LoadSwitch(builder);
                 }
             }
         }
         return loadSir;
     }
 
-    private LoadSwitch() {
-        this.builder = new Builder();
+    public static LoadSwitch get() {
+        return get(new Builder());
+    }
+
+
+    private LoadSwitch(Builder builder) {
+        this.builder = builder;
     }
 
     public LoadSwitchService register(@NonNull Object target) {
@@ -40,11 +45,6 @@ public class LoadSwitch {
     public LoadSwitchService register(Object activityOrFragmentOrView, OnLoadLayoutListener listener) {
         TargetContext targetContext = LoadSwitchUtils.getTargetContext(activityOrFragmentOrView);
         return new LoadSwitchService(targetContext, builder, listener);
-    }
-
-    public LoadSwitch newBuilder() {
-        this.builder = new Builder();
-        return this;
     }
 
     public static class Builder {

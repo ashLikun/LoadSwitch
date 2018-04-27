@@ -7,7 +7,7 @@ import android.view.View;
 import com.ashlikun.loadswitch.ContextData;
 import com.ashlikun.loadswitch.LoadSwitch;
 import com.ashlikun.loadswitch.LoadSwitchService;
-import com.ashlikun.loadswitch.MyOnLoadLayoutListener;
+import com.ashlikun.loadswitch.DefaultOnLoadLayoutListener;
 import com.ashlikun.loadswitch.OnLoadSwitchClick;
 
 public class MainActivity extends AppCompatActivity
@@ -20,8 +20,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         loadSwitchService = LoadSwitch
-                .getDefault()
-                .register(findViewById(R.id.switchRoot), new MyOnLoadLayoutListener(this, this));
+                .get()
+                .register(findViewById(R.id.switchRoot), new DefaultOnLoadLayoutListener(this, this));
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

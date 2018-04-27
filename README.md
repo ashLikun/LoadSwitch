@@ -26,9 +26,9 @@ dependencies {
 
 ### 1.用法
     //创建LoadSwitchService
-    loadSwitchService = LoadSwitchService.generate(getSwitchRoot(), new MyOnLoadLayoutListener(this, getOnLoadSwitchClick()));
-
-
+    loadSwitchService = LoadSwitch
+                   .get()
+                   .register(findViewById(R.id.switchRoot), new DefaultOnLoadLayoutListener(this, this));
      loadSwitchService = LoadSwitchService.generate(findViewById(R.id.switchRoot), new MyOnLoadLayoutListener(this, this));
            findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
                @Override

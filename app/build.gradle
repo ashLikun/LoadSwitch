@@ -36,7 +36,7 @@ dependencies {
 
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
-    compile 'me.zhanghai.android.materialprogressbar:library:1.4.2'
+    compile 'com.github.ashLikun:CircleProgressView:1.0.1'
     compile 'com.github.ashLikun.frame:flatbutton:2.0.6'
     compile project(':library')
 }
