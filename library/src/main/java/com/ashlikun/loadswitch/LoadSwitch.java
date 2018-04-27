@@ -15,6 +15,7 @@ public class LoadSwitch {
     public static int BASE_LOADING_LAYOUT_ID = R.layout.base_load_loading;
     public static int BASE_RETRY_LAYOUT_ID = R.layout.base_load_retry;
     public static int BASE_EMPTY_LAYOUT_ID = R.layout.base_load_empty;
+    public static int BASE_LOAD_SERVICE_ERROR = R.drawable.material_service_error;
     private static volatile LoadSwitch loadSir;
     private Builder builder;
 

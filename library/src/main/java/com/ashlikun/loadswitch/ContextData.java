@@ -18,7 +18,7 @@ public class ContextData {
     //显示的标题
     private String title;
     //显示图片的Id 大于0就会显示， 其他的显示默认
-    private int resId = R.drawable.material_service_error;
+    private int resId = LoadSwitch.BASE_LOAD_SERVICE_ERROR;
 
     //按钮文字
     private String buttonText;
