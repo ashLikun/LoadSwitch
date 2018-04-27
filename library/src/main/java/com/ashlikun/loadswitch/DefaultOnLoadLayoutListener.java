@@ -30,6 +30,7 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
     public void setRetryEvent(View retryView, final ContextData data) {
         TextView title = (TextView) retryView.findViewById(R.id.title);
         if (title != null) {
+            title.setVisibility(View.VISIBLE);
             if (data == null || TextUtils.isEmpty(data.getTitle())) {
                 title.setText(context.getResources().getString(R.string.http_request_failure));
             } else if (data != null && !TextUtils.isEmpty(data.getTitle())) {
@@ -71,6 +72,7 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
     public void setEmptyEvent(View emptyView, final ContextData data) {
         TextView title = (TextView) emptyView.findViewById(R.id.title);
         if (title != null) {
+            title.setVisibility(View.VISIBLE);
             if (data == null || TextUtils.isEmpty(data.getTitle())) {
                 title.setText(context.getResources().getString(R.string.no_data));
             } else if (data != null && !TextUtils.isEmpty(data.getTitle())) {
