@@ -17,8 +17,8 @@ import android.widget.TextView;
 
 
 public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
-    public Context context;
-    public OnLoadSwitchClick clickListion;
+    private Context context;
+    private OnLoadSwitchClick clickListion;
 
 
     public DefaultOnLoadLayoutListener(Context context, OnLoadSwitchClick clickListion) {
@@ -121,5 +121,13 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
                 }
             }
         }
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public OnLoadSwitchClick getClickListion() {
+        return clickListion;
     }
 }
