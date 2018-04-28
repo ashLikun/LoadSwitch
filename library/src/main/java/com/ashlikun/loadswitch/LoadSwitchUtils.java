@@ -21,7 +21,7 @@ public class LoadSwitchUtils {
         if (activityOrFragmentOrView instanceof Activity) {
             Activity activity = (Activity) activityOrFragmentOrView;
             context = activity;
-            contentParent = activity.findViewById(android.R.id.content);
+            contentParent = (ViewGroup)activity.findViewById(android.R.id.content);
         } else if (activityOrFragmentOrView instanceof Fragment) {
             Fragment fragment = (Fragment) activityOrFragmentOrView;
             context = fragment.getActivity();
