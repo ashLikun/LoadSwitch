@@ -98,7 +98,7 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
         emptyView.setOnClickListener(onClickListener);
     }
 
-    private class MyOnClickListener implements View.OnClickListener {
+    public class MyOnClickListener implements View.OnClickListener {
         final ContextData data;
         final int flag;
 
