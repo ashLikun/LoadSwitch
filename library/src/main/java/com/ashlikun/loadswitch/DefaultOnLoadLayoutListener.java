@@ -45,7 +45,7 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
                 img.setImageResource(data.getResId());
             }
         }
-        MyOnClickListener onClickListener = new MyOnClickListener(data);
+        MyOnClickListener onClickListener = new MyOnClickListener(data, 2);
         TextView butt = (TextView) retryView.findViewById(R.id.reSet);
         if (butt != null) {
             if (!TextUtils.isEmpty(data.getButtonText())) {
@@ -88,7 +88,7 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
             }
         }
         TextView butt = (TextView) emptyView.findViewById(R.id.reSet);
-        MyOnClickListener onClickListener = new MyOnClickListener(data);
+        MyOnClickListener onClickListener = new MyOnClickListener(data, 1);
         if (butt != null) {
             if (!TextUtils.isEmpty(data.getButtonText())) {
                 butt.setText(data.getButtonText());
@@ -100,15 +100,25 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
 
     private class MyOnClickListener implements View.OnClickListener {
         final ContextData data;
+        final int flag;
 
-        public MyOnClickListener(ContextData data) {
+        /**
+         * @param data
+         * @param flag 1:代表空的时候点击事件，2：加载失败，从新加载
+         */
+        public MyOnClickListener(ContextData data, int flag) {
             this.data = data;
+            this.flag = flag;
         }
 
         @Override
         public void onClick(View v) {
             if (clickListion != null) {
-                clickListion.onEmptyClick(data);
+                if (flag == 1) {
+                    clickListion.onEmptyClick(data);
+                } else {
+                    clickListion.onRetryClick(data);
+                }
             }
         }
     }
