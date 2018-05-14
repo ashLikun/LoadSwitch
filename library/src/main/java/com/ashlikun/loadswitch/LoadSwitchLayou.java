@@ -139,9 +139,6 @@ public class LoadSwitchLayou extends FrameLayout {
     }
 
     public View addOtherView(View view) {
-        if (view != null) {
-            Log.w(TAG, "you have already set a loading view and would be instead of this new one.");
-        }
         removeView(view);
         addView(view);
         return view;
