@@ -3,7 +3,6 @@ package com.ashlikun.loadswitch;
 import android.content.Context;
 import android.os.Looper;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -23,7 +22,7 @@ public class LoadSwitchLayou extends FrameLayout {
     private static final int CALLBACK_CUSTOM_INDEX = 1;
     public static final int NO_LAYOUT_ID = 0;
     private static final String TAG = LoadSwitchLayou.class.getSimpleName();
-
+    private int currentStatus = -999;
 
     public LoadSwitchLayou(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -104,6 +103,10 @@ public class LoadSwitchLayou extends FrameLayout {
     }
 
     private void showView(int status, ContextData data) {
+        if (currentStatus == status) {
+            return;
+        }
+        currentStatus = status;
         //清空后加的View
         if (getChildCount() > CALLBACK_CUSTOM_INDEX) {
             removeViewAt(CALLBACK_CUSTOM_INDEX);
