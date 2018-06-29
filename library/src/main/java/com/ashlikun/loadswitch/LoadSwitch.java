@@ -27,6 +27,7 @@ public class LoadSwitch {
                 }
             }
         }
+        loadSir.builder = builder;
         return loadSir;
     }
 
