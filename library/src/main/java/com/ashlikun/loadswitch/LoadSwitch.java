@@ -23,7 +23,7 @@ public class LoadSwitch {
         if (loadSir == null) {
             synchronized (LoadSwitch.class) {
                 if (loadSir == null) {
-                    loadSir = new LoadSwitch(builder);
+                    loadSir = new LoadSwitch();
                 }
             }
         }
@@ -36,8 +36,7 @@ public class LoadSwitch {
     }
 
 
-    private LoadSwitch(Builder builder) {
-        this.builder = builder;
+    private LoadSwitch() {
     }
 
     public LoadSwitchService register(@NonNull Object target) {
@@ -46,7 +45,10 @@ public class LoadSwitch {
 
     public LoadSwitchService register(Object activityOrFragmentOrView, OnLoadLayoutListener listener) {
         TargetContext targetContext = LoadSwitchUtils.getTargetContext(activityOrFragmentOrView);
-        return new LoadSwitchService(targetContext, builder, listener);
+        LoadSwitchService switchService = new LoadSwitchService(targetContext, builder, listener);
+        //释放builder
+        builder = null;
+        return switchService;
     }
 
     public static class Builder {
