@@ -61,47 +61,57 @@ public class ContextData {
         return flag;
     }
 
-    public void setFlag(int flag) {
-        this.flag = flag;
-    }
 
     public int getErrCode() {
         return errCode;
     }
 
-    public void setErrCode(int errCode) {
-        this.errCode = errCode;
-    }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public int getResId() {
         return resId;
     }
 
-    public void setResId(int resId) {
-        this.resId = resId;
-    }
 
     public String getButtonText() {
         return buttonText;
-    }
-
-    public void setButtonText(String buttonText) {
-        this.buttonText = buttonText;
     }
 
     public Bundle getExtend() {
         return extend;
     }
 
-    public void setExtend(Bundle extend) {
+    public ContextData setFlag(int flag) {
+        this.flag = flag;
+        return this;
+    }
+
+    public ContextData setErrCode(int errCode) {
+        this.errCode = errCode;
+        return this;
+    }
+
+    public ContextData setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public ContextData setResId(int resId) {
+        this.resId = resId;
+        return this;
+    }
+
+    public ContextData setButtonText(String buttonText) {
+        this.buttonText = buttonText;
+        return this;
+    }
+
+    public ContextData setExtend(Bundle extend) {
         this.extend = extend;
+        return this;
     }
 }
