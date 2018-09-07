@@ -35,6 +35,28 @@ public class LoadSwitch {
         return get(new Builder());
     }
 
+    /**
+     * 带协调滚动
+     *
+     * @return
+     */
+    public static LoadSwitch getNested() {
+        return get(new Builder()
+                .setEnptyId(R.layout.base_load_empty_nested_scroll)
+                .setLoaddingId(R.layout.base_load_loading_nested_scroll)
+                .setRetryId(R.layout.base_load_retry_nested_scroll));
+    }
+
+    /**
+     * 带协调滚动
+     *
+     * @return
+     */
+    public static LoadSwitch getNestedNoLoadding() {
+        return get(new Builder()
+                .setEnptyId(R.layout.base_load_empty_nested_scroll)
+                .setRetryId(R.layout.base_load_retry_nested_scroll));
+    }
 
     private LoadSwitch() {
     }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="30dp"
+        android:paddingTop="30dp">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="空空如也"
+            android:visibility="gone" />
+
+        <com.ashlikun.flatbutton.FlatButton
+            android:id="@+id/reSet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:text="点击重试"
+            android:textColor="@color/load_and_retry_button_color"
+            app:colorNormal="#00000000"
+            app:colorPressed="#ffcccccc"
+            app:colorRipple="#ff888888"
+            app:cornerRadius="6dp"
+            app:strokeColor="#ff999999"
+            app:strokeWidth="1dp"></com.ashlikun.flatbutton.FlatButton>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
