@@ -20,8 +20,10 @@ public class ContextData {
     //显示图片的Id 大于0就会显示， 其他的显示默认
     private int resId = LoadSwitch.BASE_LOAD_SERVICE_ERROR;
 
-    //按钮文字
+    //按钮文字,
     private String buttonText;
+    //按钮是否显示
+    private boolean buttonShow = true;
     //扩展的其他数据
     private Bundle extend;
 
@@ -55,6 +57,7 @@ public class ContextData {
         this.title = title;
         this.resId = resId;
         this.buttonText = buttonText;
+        buttonShow = !(buttonText == null || buttonText.isEmpty());
     }
 
     public int getFlag() {
@@ -71,6 +74,9 @@ public class ContextData {
         return title;
     }
 
+    public boolean isButtonShow() {
+        return buttonShow;
+    }
 
     public int getResId() {
         return resId;
@@ -107,6 +113,11 @@ public class ContextData {
 
     public ContextData setButtonText(String buttonText) {
         this.buttonText = buttonText;
+        return this;
+    }
+
+    public ContextData setButtonShow(boolean buttonShow) {
+        this.buttonShow = buttonShow;
         return this;
     }
 

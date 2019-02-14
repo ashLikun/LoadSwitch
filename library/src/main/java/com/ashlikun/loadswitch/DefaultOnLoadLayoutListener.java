@@ -48,6 +48,11 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
         MyOnClickListener onClickListener = new MyOnClickListener(data, 2);
         TextView butt = (TextView) retryView.findViewById(R.id.reSet);
         if (butt != null) {
+            if (data.isButtonShow()) {
+                butt.setVisibility(View.VISIBLE);
+            } else {
+                butt.setVisibility(View.GONE);
+            }
             if (!TextUtils.isEmpty(data.getButtonText())) {
                 butt.setText(data.getButtonText());
             }
@@ -90,6 +95,11 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
         TextView butt = (TextView) emptyView.findViewById(R.id.reSet);
         MyOnClickListener onClickListener = new MyOnClickListener(data, 1);
         if (butt != null) {
+            if (data.isButtonShow()) {
+                butt.setVisibility(View.VISIBLE);
+            } else {
+                butt.setVisibility(View.GONE);
+            }
             if (!TextUtils.isEmpty(data.getButtonText())) {
                 butt.setText(data.getButtonText());
             }
