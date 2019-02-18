@@ -107,7 +107,9 @@ public class LoadSwitchLayou extends FrameLayout {
             return;
         }
         currentStatus = status;
-        data.check(getContext());
+        if (data != null) {
+            data.check(getContext());
+        }
         //清空后加的View
         if (getChildCount() > CALLBACK_CUSTOM_INDEX) {
             removeViewAt(CALLBACK_CUSTOM_INDEX);
