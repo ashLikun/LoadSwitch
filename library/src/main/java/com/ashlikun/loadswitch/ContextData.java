@@ -13,29 +13,29 @@ import android.os.Bundle;
 
 public class ContextData {
     //标识
-    int flag;
+    public int flag;
     // 失败 时候的错误类型
-    int errCode;
+    public int errCode;
     //显示的标题
-    String title;
+    public String title;
     //显示图片的Id 大于0就会显示， 其他的显示默认
-    int resId = LoadSwitch.BASE_LOAD_SERVICE_ERROR;
+    public int resId = LoadSwitch.BASE_LOAD_SERVICE_ERROR;
     /**
      * 图片宽度
      */
-    int imgWidth = -1;
+    public int imgWidth = -1;
     /**
      * 图片高度
      */
-    int imgHeight = -1;
-    boolean imgSizeIsDp = false;
+    public int imgHeight = -1;
+    public boolean imgSizeIsDp = false;
 
     //按钮文字,
-    String buttonText;
+    public String buttonText;
     //按钮是否显示
-    boolean buttonShow = true;
+    public boolean buttonShow = true;
     //扩展的其他数据
-    Bundle extend;
+    public Bundle extend;
 
     public void check(Context context) {
         if (imgSizeIsDp) {
@@ -83,9 +83,6 @@ public class ContextData {
         return (int) (dipValue * scale + 0.5f);
     }
 
-    public Bundle getExtend() {
-        return extend;
-    }
 
     public ContextData setFlag(int flag) {
         this.flag = flag;
