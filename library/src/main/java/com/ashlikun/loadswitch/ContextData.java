@@ -1,5 +1,6 @@
 package com.ashlikun.loadswitch;
 
+import android.content.Context;
 import android.os.Bundle;
 
 /**
@@ -12,28 +13,37 @@ import android.os.Bundle;
 
 public class ContextData {
     //标识
-    private int flag;
+    int flag;
     // 失败 时候的错误类型
-    private int errCode;
+    int errCode;
     //显示的标题
-    private String title;
+    String title;
     //显示图片的Id 大于0就会显示， 其他的显示默认
-    private int resId = LoadSwitch.BASE_LOAD_SERVICE_ERROR;
+    int resId = LoadSwitch.BASE_LOAD_SERVICE_ERROR;
     /**
      * 图片宽度
      */
-    private int imgWidth = -1;
+    int imgWidth = -1;
     /**
      * 图片高度
      */
-    private int imgHeight = -1;
+    int imgHeight = -1;
+    boolean imgSizeIsDp = false;
 
     //按钮文字,
-    private String buttonText;
+    String buttonText;
     //按钮是否显示
-    private boolean buttonShow = true;
+    boolean buttonShow = true;
     //扩展的其他数据
-    private Bundle extend;
+    Bundle extend;
+
+    public void check(Context context) {
+        if (imgSizeIsDp) {
+            imgWidth = dip2px(context, imgWidth);
+            imgHeight = dip2px(context, imgHeight);
+            imgSizeIsDp = false;
+        }
+    }
 
     public ContextData() {
     }
@@ -68,42 +78,13 @@ public class ContextData {
         buttonShow = !(buttonText == null || buttonText.isEmpty());
     }
 
-    public int getFlag() {
-        return flag;
-    }
-
-
-    public int getErrCode() {
-        return errCode;
-    }
-
-
-    public String getTitle() {
-        return title;
-    }
-
-    public boolean isButtonShow() {
-        return buttonShow;
-    }
-
-    public int getResId() {
-        return resId;
-    }
-
-    public String getButtonText() {
-        return buttonText;
+    int dip2px(Context context, float dipValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dipValue * scale + 0.5f);
     }
 
     public Bundle getExtend() {
         return extend;
-    }
-
-    public int getImgWidth() {
-        return imgWidth;
-    }
-
-    public int getImgHeight() {
-        return imgHeight;
     }
 
     public ContextData setFlag(int flag) {
@@ -146,4 +127,13 @@ public class ContextData {
         this.imgHeight = imgHeight;
         return this;
     }
+
+    public ContextData setImgSizeDp(int imgWidthDp, int imgHeightDp) {
+        this.imgWidth = imgWidthDp;
+        this.imgHeight = imgHeightDp;
+        imgSizeIsDp = true;
+        return this;
+    }
+
+
 }

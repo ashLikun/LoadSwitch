@@ -20,7 +20,6 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
     protected Context context;
     protected OnLoadSwitchClick clickListion;
 
-
     public DefaultOnLoadLayoutListener(Context context, OnLoadSwitchClick clickListion) {
         this.context = context;
         this.clickListion = clickListion;
@@ -31,34 +30,34 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
         TextView title = (TextView) retryView.findViewById(R.id.title);
         if (title != null) {
             title.setVisibility(View.VISIBLE);
-            if (data == null || TextUtils.isEmpty(data.getTitle())) {
+            if (data == null || TextUtils.isEmpty(data.title)) {
                 title.setText(context.getResources().getString(R.string.http_request_failure));
-            } else if (data != null && !TextUtils.isEmpty(data.getTitle())) {
-                title.setText(data.getTitle() + (data.getErrCode() != 0 ? "" : ("\n(错误码:" + data.getErrCode() + ")")));
+            } else if (data != null && !TextUtils.isEmpty(data.title)) {
+                title.setText(data.title + (data.errCode != 0 ? "" : ("\n(错误码:" + data.errCode + ")")));
             }
         }
         ImageView img = (ImageView) retryView.findViewById(R.id.image);
         if (img != null) {
-            if (data.getImgHeight() > 0 && data.getImgWidth() > 0) {
-                img.getLayoutParams().width = data.getImgWidth();
-                img.getLayoutParams().height = data.getImgHeight();
+            if (data.imgHeight > 0 && data.imgWidth > 0) {
+                img.getLayoutParams().width = data.imgWidth;
+                img.getLayoutParams().height = data.imgHeight;
             }
-            if (data == null || data.getResId() <= 0) {
+            if (data == null || data.resId <= 0) {
                 img.setImageResource(R.drawable.material_service_error);
-            } else if (data != null && data.getResId() > 0) {
-                img.setImageResource(data.getResId());
+            } else if (data != null && data.resId > 0) {
+                img.setImageResource(data.resId);
             }
         }
         MyOnClickListener onClickListener = new MyOnClickListener(data, 2);
         TextView butt = (TextView) retryView.findViewById(R.id.reSet);
         if (butt != null) {
-            if (data.isButtonShow()) {
+            if (data.buttonShow) {
                 butt.setVisibility(View.VISIBLE);
             } else {
                 butt.setVisibility(View.GONE);
             }
-            if (!TextUtils.isEmpty(data.getButtonText())) {
-                butt.setText(data.getButtonText());
+            if (!TextUtils.isEmpty(data.buttonText)) {
+                butt.setText(data.buttonText);
             }
             butt.setOnClickListener(onClickListener);
         }
@@ -69,10 +68,10 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
     public void setLoadingEvent(View loadingView, ContextData data) {
         TextView title = (TextView) loadingView.findViewById(R.id.content);
         if (title != null) {
-            if (data == null || TextUtils.isEmpty(data.getTitle())) {
+            if (data == null || TextUtils.isEmpty(data.title)) {
                 title.setText(context.getResources().getString(R.string.loadding));
-            } else if (data != null && !TextUtils.isEmpty(data.getTitle())) {
-                title.setText(data.getTitle());
+            } else if (data != null && !TextUtils.isEmpty(data.title)) {
+                title.setText(data.title);
             }
         }
     }
@@ -82,34 +81,34 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
         TextView title = (TextView) emptyView.findViewById(R.id.title);
         if (title != null) {
             title.setVisibility(View.VISIBLE);
-            if (data == null || TextUtils.isEmpty(data.getTitle())) {
+            if (data == null || TextUtils.isEmpty(data.title)) {
                 title.setText(context.getResources().getString(R.string.no_data));
-            } else if (data != null && !TextUtils.isEmpty(data.getTitle())) {
-                title.setText(data.getTitle());
+            } else if (data != null && !TextUtils.isEmpty(data.title)) {
+                title.setText(data.title);
             }
         }
         ImageView img = (ImageView) emptyView.findViewById(R.id.image);
         if (img != null) {
-            if (data.getImgHeight() > 0 && data.getImgWidth() > 0) {
-                img.getLayoutParams().width = data.getImgWidth();
-                img.getLayoutParams().height = data.getImgHeight();
+            if (data.imgHeight > 0 && data.imgWidth > 0) {
+                img.getLayoutParams().width = data.imgWidth;
+                img.getLayoutParams().height = data.imgHeight;
             }
-            if (data == null || data.getResId() <= 0) {
+            if (data == null || data.resId <= 0) {
                 img.setImageResource(R.drawable.material_service_error);
-            } else if (data != null && data.getResId() > 0) {
-                img.setImageResource(data.getResId());
+            } else if (data != null && data.resId > 0) {
+                img.setImageResource(data.resId);
             }
         }
         TextView butt = (TextView) emptyView.findViewById(R.id.reSet);
         MyOnClickListener onClickListener = new MyOnClickListener(data, 1);
         if (butt != null) {
-            if (data.isButtonShow()) {
+            if (data.buttonShow) {
                 butt.setVisibility(View.VISIBLE);
             } else {
                 butt.setVisibility(View.GONE);
             }
-            if (!TextUtils.isEmpty(data.getButtonText())) {
-                butt.setText(data.getButtonText());
+            if (!TextUtils.isEmpty(data.buttonText)) {
+                butt.setText(data.buttonText);
             }
             butt.setOnClickListener(onClickListener);
         }
