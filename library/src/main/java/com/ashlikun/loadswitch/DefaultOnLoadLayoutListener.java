@@ -37,27 +37,29 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
             }
         }
         ImageView img = (ImageView) retryView.findViewById(R.id.image);
-        if (img != null) {
+        if (img != null && data != null) {
             if (data.imgHeight > 0 && data.imgWidth > 0) {
                 img.getLayoutParams().width = data.imgWidth;
                 img.getLayoutParams().height = data.imgHeight;
             }
-            if (data == null || data.resId <= 0) {
+            if (data.resId <= 0) {
                 img.setImageResource(R.drawable.material_service_error);
-            } else if (data != null && data.resId > 0) {
+            } else if (data.resId > 0) {
                 img.setImageResource(data.resId);
             }
         }
         MyOnClickListener onClickListener = new MyOnClickListener(data, 2);
         TextView butt = (TextView) retryView.findViewById(R.id.reSet);
         if (butt != null) {
-            if (data.buttonShow) {
-                butt.setVisibility(View.VISIBLE);
-            } else {
-                butt.setVisibility(View.GONE);
-            }
-            if (!TextUtils.isEmpty(data.buttonText)) {
-                butt.setText(data.buttonText);
+            if (data != null) {
+                if (data.buttonShow) {
+                    butt.setVisibility(View.VISIBLE);
+                } else {
+                    butt.setVisibility(View.GONE);
+                }
+                if (!TextUtils.isEmpty(data.buttonText)) {
+                    butt.setText(data.buttonText);
+                }
             }
             butt.setOnClickListener(onClickListener);
         }
@@ -88,27 +90,29 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
             }
         }
         ImageView img = (ImageView) emptyView.findViewById(R.id.image);
-        if (img != null) {
+        if (img != null && data != null) {
             if (data.imgHeight > 0 && data.imgWidth > 0) {
                 img.getLayoutParams().width = data.imgWidth;
                 img.getLayoutParams().height = data.imgHeight;
             }
-            if (data == null || data.resId <= 0) {
+            if (data.resId <= 0) {
                 img.setImageResource(R.drawable.material_service_error);
-            } else if (data != null && data.resId > 0) {
+            } else if (data.resId > 0) {
                 img.setImageResource(data.resId);
             }
         }
         TextView butt = (TextView) emptyView.findViewById(R.id.reSet);
         MyOnClickListener onClickListener = new MyOnClickListener(data, 1);
         if (butt != null) {
-            if (data.buttonShow) {
-                butt.setVisibility(View.VISIBLE);
-            } else {
-                butt.setVisibility(View.GONE);
-            }
-            if (!TextUtils.isEmpty(data.buttonText)) {
-                butt.setText(data.buttonText);
+            if (data != null) {
+                if (data.buttonShow) {
+                    butt.setVisibility(View.VISIBLE);
+                } else {
+                    butt.setVisibility(View.GONE);
+                }
+                if (!TextUtils.isEmpty(data.buttonText)) {
+                    butt.setText(data.buttonText);
+                }
             }
             butt.setOnClickListener(onClickListener);
         }
