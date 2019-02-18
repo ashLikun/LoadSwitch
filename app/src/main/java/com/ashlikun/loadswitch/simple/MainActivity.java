@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 if (currStatus == 0) {
-                    loadSwitchService.showEmpty(new ContextData());
+                    loadSwitchService.showEmpty(new ContextData().setImgSize(500, 500));
                     currStatus = 1;
                 } else if (currStatus == 1) {
                     loadSwitchService.showLoading(new ContextData());

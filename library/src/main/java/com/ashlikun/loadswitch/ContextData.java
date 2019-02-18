@@ -19,6 +19,14 @@ public class ContextData {
     private String title;
     //显示图片的Id 大于0就会显示， 其他的显示默认
     private int resId = LoadSwitch.BASE_LOAD_SERVICE_ERROR;
+    /**
+     * 图片宽度
+     */
+    private int imgWidth = -1;
+    /**
+     * 图片高度
+     */
+    private int imgHeight = -1;
 
     //按钮文字,
     private String buttonText;
@@ -82,13 +90,20 @@ public class ContextData {
         return resId;
     }
 
-
     public String getButtonText() {
         return buttonText;
     }
 
     public Bundle getExtend() {
         return extend;
+    }
+
+    public int getImgWidth() {
+        return imgWidth;
+    }
+
+    public int getImgHeight() {
+        return imgHeight;
     }
 
     public ContextData setFlag(int flag) {
@@ -123,6 +138,12 @@ public class ContextData {
 
     public ContextData setExtend(Bundle extend) {
         this.extend = extend;
+        return this;
+    }
+
+    public ContextData setImgSize(int imgWidth, int imgHeight) {
+        this.imgWidth = imgWidth;
+        this.imgHeight = imgHeight;
         return this;
     }
 }

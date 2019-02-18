@@ -39,6 +39,10 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
         }
         ImageView img = (ImageView) retryView.findViewById(R.id.image);
         if (img != null) {
+            if (data.getImgHeight() > 0 && data.getImgWidth() > 0) {
+                img.getLayoutParams().width = data.getImgWidth();
+                img.getLayoutParams().height = data.getImgHeight();
+            }
             if (data == null || data.getResId() <= 0) {
                 img.setImageResource(R.drawable.material_service_error);
             } else if (data != null && data.getResId() > 0) {
@@ -86,6 +90,10 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
         }
         ImageView img = (ImageView) emptyView.findViewById(R.id.image);
         if (img != null) {
+            if (data.getImgHeight() > 0 && data.getImgWidth() > 0) {
+                img.getLayoutParams().width = data.getImgWidth();
+                img.getLayoutParams().height = data.getImgHeight();
+            }
             if (data == null || data.getResId() <= 0) {
                 img.setImageResource(R.drawable.material_service_error);
             } else if (data != null && data.getResId() > 0) {
