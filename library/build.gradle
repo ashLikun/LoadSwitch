@@ -19,10 +19,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    //compile 'com.afollestad.material-dialogs:core:0.9.4.3'
-    compileOnly 'com.github.ashLikun:CircleProgressView:1.0.1'
-    compileOnly 'com.github.ashLikun.frame:flatbutton:2.0.6'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    compileOnly 'com.github.ashLikun:CircleProgressView:2.0.0'
+    compileOnly 'com.github.ashLikun.frame:flatbutton:+'
     compileOnly rootProject.ext.v4Version
 }
 apply from: '../maven.gradle'
