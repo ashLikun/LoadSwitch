@@ -31,8 +31,9 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
         if (title != null) {
             title.setVisibility(View.VISIBLE);
             if (data == null || TextUtils.isEmpty(data.title)) {
-                title.setText(context.getResources().getString(R.string.http_request_failure));
+                title.setVisibility(View.GONE);
             } else if (data != null && !TextUtils.isEmpty(data.title)) {
+                title.setVisibility(View.VISIBLE);
                 title.setText(data.title + (data.errCode != 0 ? "" : ("\n(错误码:" + data.errCode + ")")));
             }
         }
@@ -71,8 +72,9 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
         TextView title = (TextView) loadingView.findViewById(R.id.content);
         if (title != null) {
             if (data == null || TextUtils.isEmpty(data.title)) {
-                title.setText(context.getResources().getString(R.string.loadding));
+                title.setVisibility(View.GONE);
             } else if (data != null && !TextUtils.isEmpty(data.title)) {
+                title.setVisibility(View.VISIBLE);
                 title.setText(data.title);
             }
         }
@@ -82,10 +84,10 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
     public void setEmptyEvent(View emptyView, final ContextData data) {
         TextView title = (TextView) emptyView.findViewById(R.id.title);
         if (title != null) {
-            title.setVisibility(View.VISIBLE);
             if (data == null || TextUtils.isEmpty(data.title)) {
-                title.setText(context.getResources().getString(R.string.no_data));
+                title.setVisibility(View.GONE);
             } else if (data != null && !TextUtils.isEmpty(data.title)) {
+                title.setVisibility(View.VISIBLE);
                 title.setText(data.title);
             }
         }
