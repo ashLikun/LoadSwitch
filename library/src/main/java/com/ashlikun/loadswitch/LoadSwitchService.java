@@ -1,6 +1,7 @@
 package com.ashlikun.loadswitch;
 
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 /**
  * 作者　　: 李坤
@@ -41,6 +42,9 @@ public class LoadSwitchService {
         mLoadingAndRetryLayout.setListener(listener);
         mLoadingAndRetryLayout.setBuilder(builder);
         ViewGroup.LayoutParams lp = targetContext.getOldContent().getLayoutParams();
+        FrameLayout.LayoutParams lp2 = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT);
+        targetContext.getOldContent().setLayoutParams(lp2);
         targetContext.getParentView().addView(mLoadingAndRetryLayout, targetContext.getChildIndex(), lp);
         mLoadingAndRetryLayout.addOtherView(targetContext.getOldContent());
         showContent();
