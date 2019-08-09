@@ -1,13 +1,14 @@
 package com.ashlikun.loadswitch.simple;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.ashlikun.loadswitch.ContextData;
+import com.ashlikun.loadswitch.DefaultOnLoadLayoutListener;
 import com.ashlikun.loadswitch.LoadSwitch;
 import com.ashlikun.loadswitch.LoadSwitchService;
-import com.ashlikun.loadswitch.DefaultOnLoadLayoutListener;
 import com.ashlikun.loadswitch.OnLoadSwitchClick;
 
 public class MainActivity extends AppCompatActivity
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         loadSwitchService = LoadSwitch
                 .get()
-                .register(findViewById(R.id.switchRoot), new DefaultOnLoadLayoutListener(this, this));
+                .register(findViewById(R.id.twoRecyclerView), new DefaultOnLoadLayoutListener(this, this));
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

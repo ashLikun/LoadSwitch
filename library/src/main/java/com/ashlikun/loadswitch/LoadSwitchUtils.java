@@ -2,9 +2,11 @@ package com.ashlikun.loadswitch;
 
 import android.app.Activity;
 import android.content.Context;
-import androidx.fragment.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
 
 /**
  * 作者　　: 李坤
@@ -21,7 +23,7 @@ public class LoadSwitchUtils {
         if (activityOrFragmentOrView instanceof Activity) {
             Activity activity = (Activity) activityOrFragmentOrView;
             context = activity;
-            contentParent = (ViewGroup)activity.findViewById(android.R.id.content);
+            contentParent = (ViewGroup) activity.findViewById(android.R.id.content);
         } else if (activityOrFragmentOrView instanceof Fragment) {
             Fragment fragment = (Fragment) activityOrFragmentOrView;
             context = fragment.getActivity();
@@ -51,4 +53,51 @@ public class LoadSwitchUtils {
         contentParent.removeView(oldContent);
         return new TargetContext(context, contentParent, oldContent, index);
     }
+
+    public static void replaceId(ConstraintLayout.LayoutParams params, int fromId, int toId) {
+        if (params.circleConstraint == fromId) {
+            params.circleConstraint = toId;
+        }
+        if (params.leftToLeft == fromId) {
+            params.leftToLeft = toId;
+        }
+        if (params.leftToRight == fromId) {
+            params.leftToRight = toId;
+        }
+        if (params.rightToLeft == fromId) {
+            params.rightToLeft = toId;
+        }
+        if (params.rightToRight == fromId) {
+            params.rightToRight = toId;
+        }
+        if (params.topToTop == fromId) {
+            params.topToTop = toId;
+        }
+        if (params.topToBottom == fromId) {
+            params.topToBottom = toId;
+        }
+        if (params.bottomToTop == fromId) {
+            params.bottomToTop = toId;
+        }
+        if (params.bottomToBottom == fromId) {
+            params.bottomToBottom = toId;
+        }
+        if (params.baselineToBaseline == fromId) {
+            params.baselineToBaseline = toId;
+        }
+        if (params.startToEnd == fromId) {
+            params.startToEnd = toId;
+        }
+        if (params.startToStart == fromId) {
+            params.startToStart = toId;
+        }
+        if (params.endToStart == fromId) {
+            params.endToStart = toId;
+        }
+        if (params.endToEnd == fromId) {
+            params.endToEnd = toId;
+        }
+    }
+
+
 }

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="switchRoot" type="id"/>
+    <item name="LoadSwitch_Main_Id" type="id"/>
 </resources>
