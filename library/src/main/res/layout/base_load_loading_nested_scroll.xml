@@ -9,11 +9,11 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingBottom="30dp"
-        android:paddingTop="30dp">
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp">
 
         <com.ashlikun.circleprogress.CircleProgressView
-            android:id="@+id/circleProgressBar"
+            android:id="@+id/loadSwitchCircleProgressBar"
             android:layout_width="46dp"
             android:layout_height="46dp"
             android:layout_centerVertical="true"
@@ -25,7 +25,7 @@
 
 
         <TextView
-            android:id="@+id/content"
+            android:id="@+id/loadSwitchLoadTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

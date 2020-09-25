@@ -4,40 +4,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:orientation="vertical"
     android:paddingTop="30dp"
-    android:paddingBottom="30dp"
-    android:orientation="vertical">
+    android:paddingBottom="30dp">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/loadSwitchImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/loadSwitchTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="空空如也"
+        android:textColor="@color/load_and_retry_text_color"
         android:visibility="gone" />
 
     <com.ashlikun.flatbutton.FlatButton
-        android:id="@+id/reSet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/loadSwitchReSet"
+        android:layout_width="100dp"
+        android:layout_height="32dp"
         android:layout_marginTop="20dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="10dp"
+        android:gravity="center"
         android:text="点击重试"
         android:textColor="@color/load_and_retry_button_color"
+        android:textSize="14dp"
         app:colorNormal="#00000000"
         app:colorPressed="#ffcccccc"
         app:colorRipple="#ff888888"
-        app:cornerRadius="6dp"
-        app:strokeColor="#ff999999"
-        app:strokeWidth="1dp"></com.ashlikun.flatbutton.FlatButton>
+        app:cornerRadius="20dp"
+        app:strokeColor="@color/load_and_retry_button_strokecolor"
+        app:strokeWidth="0.5dp"></com.ashlikun.flatbutton.FlatButton>
 
 </LinearLayout>

@@ -27,7 +27,7 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
 
     @Override
     public void setRetryEvent(View retryView, final ContextData data) {
-        TextView title = (TextView) retryView.findViewById(R.id.title);
+        TextView title = (TextView) retryView.findViewById(R.id.loadSwitchTitle);
         if (title != null) {
             title.setVisibility(View.VISIBLE);
             if (data == null || TextUtils.isEmpty(data.title)) {
@@ -37,7 +37,7 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
                 title.setText(data.title + (data.errCode != 0 ? "" : ("\n(错误码:" + data.errCode + ")")));
             }
         }
-        ImageView img = (ImageView) retryView.findViewById(R.id.image);
+        ImageView img = (ImageView) retryView.findViewById(R.id.loadSwitchImage);
         if (img != null && data != null) {
             if (data.imgHeight > 0 && data.imgWidth > 0) {
                 img.getLayoutParams().width = data.imgWidth;
@@ -50,7 +50,7 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
             }
         }
         MyOnClickListener onClickListener = new MyOnClickListener(data, 2);
-        TextView butt = (TextView) retryView.findViewById(R.id.reSet);
+        TextView butt = (TextView) retryView.findViewById(R.id.loadSwitchReSet);
         if (butt != null) {
             if (data != null) {
                 if (data.buttonShow) {
@@ -69,7 +69,7 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
 
     @Override
     public void setLoadingEvent(View loadingView, ContextData data) {
-        TextView title = (TextView) loadingView.findViewById(R.id.content);
+        TextView title = (TextView) loadingView.findViewById(R.id.loadSwitchLoadTitle);
         if (title != null) {
             if (data == null || TextUtils.isEmpty(data.title)) {
                 title.setVisibility(View.GONE);
@@ -82,7 +82,7 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
 
     @Override
     public void setEmptyEvent(View emptyView, final ContextData data) {
-        TextView title = (TextView) emptyView.findViewById(R.id.title);
+        TextView title = (TextView) emptyView.findViewById(R.id.loadSwitchTitle);
         if (title != null) {
             if (data == null || TextUtils.isEmpty(data.title)) {
                 title.setVisibility(View.GONE);
@@ -91,7 +91,7 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
                 title.setText(data.title);
             }
         }
-        ImageView img = (ImageView) emptyView.findViewById(R.id.image);
+        ImageView img = (ImageView) emptyView.findViewById(R.id.loadSwitchImage);
         if (img != null && data != null) {
             if (data.imgHeight > 0 && data.imgWidth > 0) {
                 img.getLayoutParams().width = data.imgWidth;
@@ -103,7 +103,7 @@ public class DefaultOnLoadLayoutListener implements OnLoadLayoutListener {
                 img.setImageResource(data.resId);
             }
         }
-        TextView butt = (TextView) emptyView.findViewById(R.id.reSet);
+        TextView butt = (TextView) emptyView.findViewById(R.id.loadSwitchReSet);
         MyOnClickListener onClickListener = new MyOnClickListener(data, 1);
         if (butt != null) {
             if (data != null) {

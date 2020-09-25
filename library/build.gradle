@@ -20,9 +20,9 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    compileOnly rootProject.ext.designVersion
     compileOnly 'com.github.ashLikun:CircleProgressView:2.0.0'
     compileOnly 'com.github.ashLikun.frame:flatbutton:3.0.0'
-    compileOnly rootProject.ext.v4Version
     compileOnly 'androidx.constraintlayout:constraintlayout:1.1.3'
 }
 apply from: '../maven.gradle'
