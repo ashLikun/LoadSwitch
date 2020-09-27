@@ -4,4 +4,5 @@
     <color name="load_and_retry_button_strokecolor">#ff666666</color>
     <color name="load_and_retry_circle_color">#ff666666</color>
     <color name="load_and_retry_text_color">#ff666666</color>
+    <color name="load_and_retry_load_title_color">#ff666666</color>
 </resources>

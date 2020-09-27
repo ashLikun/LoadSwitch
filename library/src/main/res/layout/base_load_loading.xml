@@ -24,6 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="  载入中..."
-        android:textColor="@color/load_and_retry_text_color"
+        android:textColor="@color/load_and_retry_load_title_color"
         android:textSize="14sp" />
 </LinearLayout>
