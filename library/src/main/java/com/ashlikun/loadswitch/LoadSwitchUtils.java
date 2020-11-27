@@ -50,7 +50,6 @@ public class LoadSwitchUtils {
         } else {
             oldContent = contentParent.getChildAt(0);
         }
-        contentParent.removeView(oldContent);
         return new TargetContext(context, contentParent, oldContent, index);
     }
 

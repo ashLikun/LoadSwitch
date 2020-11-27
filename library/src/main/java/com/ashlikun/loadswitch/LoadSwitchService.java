@@ -1,10 +1,5 @@
 package com.ashlikun.loadswitch;
 
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 /**
  * 作者　　: 李坤
  * 创建时间: 17:07 Administrator
@@ -43,25 +38,9 @@ public class LoadSwitchService {
         mLoadingAndRetryLayout = new LoadSwitchLayou(targetContext.getContext());
         mLoadingAndRetryLayout.setListener(listener);
         mLoadingAndRetryLayout.setBuilder(builder);
+        mLoadingAndRetryLayout.setTargetContext(targetContext);
         mLoadingAndRetryLayout.setId(R.id.LoadSwitch_Main_Id);
-        ViewGroup.LayoutParams lp = targetContext.getOldContent().getLayoutParams();
-        try {
-            if (targetContext.getParentView() instanceof ConstraintLayout) {
-                int oldId = targetContext.getOldContent().getId();
-                for (int i = 0; i < targetContext.getParentView().getChildCount(); i++) {
-                    LoadSwitchUtils.replaceId((ConstraintLayout.LayoutParams) targetContext.getParentView().getChildAt(i).getLayoutParams(),
-                            oldId, mLoadingAndRetryLayout.getId());
-                }
-            }
-        } catch (Exception e) {
-
-        }
-        targetContext.getParentView().addView(mLoadingAndRetryLayout, targetContext.getChildIndex(), lp);
-
-        FrameLayout.LayoutParams lp2 = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.MATCH_PARENT);
-        targetContext.getOldContent().setLayoutParams(lp2);
-        mLoadingAndRetryLayout.addOtherView(targetContext.getOldContent());
+        mLoadingAndRetryLayout.init();
         showContent();
         loadingCanShow = true;
     }

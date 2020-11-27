@@ -1,6 +1,5 @@
 package com.ashlikun.loadswitch.simple;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,7 +11,10 @@ import com.ashlikun.loadswitch.LoadSwitch;
 import com.ashlikun.loadswitch.LoadSwitchService;
 import com.ashlikun.loadswitch.OnLoadSwitchClick;
 
-public class MainActivity extends AppCompatActivity
+/**
+ * 测试约束布局
+ */
+public class Main2Activity extends AppCompatActivity
         implements OnLoadSwitchClick {
     LoadSwitchService loadSwitchService;
     int currStatus = 0;
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
         loadSwitchService = LoadSwitch
                 .get()
                 .register(findViewById(R.id.twoRecyclerView), new DefaultOnLoadLayoutListener(this, this));
@@ -40,13 +42,6 @@ public class MainActivity extends AppCompatActivity
                     loadSwitchService.showRetry(new ContextData());
                     currStatus = 0;
                 }
-            }
-        });
-        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Main2Activity.class));
-
             }
         });
     }
