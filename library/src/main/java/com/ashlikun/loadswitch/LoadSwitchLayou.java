@@ -8,7 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import androidx.constraintlayout.core.widgets.ConstraintWidget;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import java.lang.reflect.Field;
 
 
 /**
@@ -47,9 +50,29 @@ public class LoadSwitchLayou extends FrameLayout {
         //如果是协调布局
         if (targetContext.getParentView() instanceof ConstraintLayout) {
             isConstraintLayout = true;
+
             //复制Content的LayoutParams
-            setLayoutParams(new ConstraintLayout.LayoutParams(contentParams));
-            targetContext.getParentView().addView(this, targetContext.getChildIndex() + 1, contentParams);
+            ConstraintLayout.LayoutParams contentParamsConstraint = (ConstraintLayout.LayoutParams) contentParams;
+            ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(contentParamsConstraint);
+            if (params.getConstraintWidget() == contentParamsConstraint.getConstraintWidget()) {
+                try {
+                    //ConstraintLayout.LayoutParams 的 widget对象不能复制，否则会公用同一个
+                    Field widget = params.getClass().getDeclaredField("widget");
+                    widget.setAccessible(true);
+                    //设置一个默认的
+                    widget.set(params, new ConstraintWidget());
+                } catch (NoSuchFieldException e) {
+                    e.printStackTrace();
+                    //抛出异常退出
+                    throw new RuntimeException(e);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                    //抛出异常退出
+                    throw new RuntimeException(e);
+                }
+            }
+            setLayoutParams(params);
+            targetContext.getParentView().addView(this, targetContext.getChildIndex() + 1, params);
         } else {
             isConstraintLayout = false;
             targetContext.getParentView().removeView(targetContext.getOldContent());
@@ -156,7 +179,7 @@ public class LoadSwitchLayou extends FrameLayout {
             setVisibility(status == 0 ? GONE : VISIBLE);
         }
         if (status == 0) {
-            getContentView().invalidate();
+            getContentView().requestLayout();
         } else if (status == 1) {
             if (listener != null) {
                 listener.setLoadingEvent(addLoadingLayout(), data);

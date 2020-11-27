@@ -25,7 +25,7 @@ public class Main2Activity extends AppCompatActivity
         setContentView(R.layout.activity_main2);
         loadSwitchService = LoadSwitch
                 .get()
-                .register(findViewById(R.id.twoRecyclerView), new DefaultOnLoadLayoutListener(this, this));
+                .register(findViewById(R.id.recycleView), new DefaultOnLoadLayoutListener(this, this));
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

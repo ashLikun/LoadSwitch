@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LoadSwitch.iml" filepath="$PROJECT_DIR$/LoadSwitch.iml" group="LoadSwitch" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="LoadSwitch/app" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" group="LoadSwitch/library" />
+      <module fileurl="file://$PROJECT_DIR$/LoadSwitch.iml" filepath="$PROJECT_DIR$/LoadSwitch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LoadSwitch.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LoadSwitch.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/LoadSwitch.library.iml" filepath="$PROJECT_DIR$/.idea/modules/library/LoadSwitch.library.iml" />
     </modules>
   </component>
 </project>
