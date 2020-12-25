@@ -73,4 +73,20 @@ public class LoadSwitchService {
     public LoadSwitchLayou getLoadingAndRetryLayout() {
         return mLoadingAndRetryLayout;
     }
+
+    public boolean isStatusContent() {
+        return mLoadingAndRetryLayout.isStatusContent();
+    }
+
+    public boolean isStatusLoading() {
+        return mLoadingAndRetryLayout.isStatusLoading();
+    }
+
+    public boolean isStatusEmpty() {
+        return mLoadingAndRetryLayout.isStatusEmpty();
+    }
+
+    public boolean isStatusRetry() {
+        return mLoadingAndRetryLayout.isStatusRetry();
+    }
 }

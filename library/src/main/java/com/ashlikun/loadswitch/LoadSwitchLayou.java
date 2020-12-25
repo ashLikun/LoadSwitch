@@ -267,4 +267,19 @@ public class LoadSwitchLayou extends FrameLayout {
         return null;
     }
 
+    public boolean isStatusContent() {
+        return currentStatus == 0;
+    }
+
+    public boolean isStatusLoading() {
+        return currentStatus == 1;
+    }
+
+    public boolean isStatusEmpty() {
+        return currentStatus == 3;
+    }
+
+    public boolean isStatusRetry() {
+        return currentStatus == 2;
+    }
 }
