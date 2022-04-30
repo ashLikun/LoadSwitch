@@ -14,6 +14,8 @@ import androidx.annotation.DrawableRes
 open class ContextData(
     //显示的标题
     var title: String = "",
+    // 失败 时候的错误类型
+    var errCode: Int = 0,
     //显示图片的Id 大于0就会显示， 其他的显示默认
     @DrawableRes
     var resId: Int = LoadSwitch.BASE_LOAD_SERVICE_ERROR,
@@ -21,8 +23,6 @@ open class ContextData(
     var buttonText: String = LoadSwitch.app.getString(R.string.loadswitch_button),
     //标识
     var flag: Int = 0,
-    // 失败 时候的错误类型
-    var errCode: Int = 0,
     //图片宽度
     var imgWidth: Int = -1,
     //图片高度
