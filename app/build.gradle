@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'kotlin-android'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -11,6 +11,9 @@ android {
         versionName rootProject.ext.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    buildFeatures {
+        viewBinding = true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -18,21 +21,23 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-alpha4', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    implementation rootProject.ext.v7AppCompat
-
+    implementation rootProject.ext.designVersion
+    implementation "androidx.core:core:1.6.+"
     implementation 'androidx.constraintlayout:constraintlayout:2+'
-    testImplementation 'junit:junit:4.12'
-    implementation 'com.github.ashLikun:CircleProgressView:2.0.0'
-    implementation 'com.github.ashLikun.frame:flatbutton:3.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout-core:1.0.3'
+    implementation 'com.github.ashLikun:CircleProgressView:2.0.1'
+    implementation 'com.github.ashLikun.frame:flatbutton:3.2.3'
     implementation project(':library')
+    //kotlin 协程
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
 }

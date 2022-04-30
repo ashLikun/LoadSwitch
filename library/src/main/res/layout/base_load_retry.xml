@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingBottom="30dp"
-    android:paddingTop="30dp">
+    android:paddingTop="30dp"
+    android:paddingBottom="30dp">
 
     <ImageView
         android:id="@+id/loadSwitchImage"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="加载失败"
+        android:text="@string/loadswitch_retry_text"
         android:textColor="@color/load_and_retry_text_color"
         android:visibility="gone" />
 
@@ -29,7 +29,7 @@
         android:layout_height="32dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="点击重试"
+        android:text="@string/loadswitch_button"
         android:textColor="@color/load_and_retry_button_color"
         android:textSize="14dp"
         app:colorNormal="#00000000"
@@ -38,8 +38,6 @@
         app:cornerRadius="20dp"
         app:strokeColor="@color/load_and_retry_button_strokecolor"
         app:strokeWidth="0.5dp"></com.ashlikun.flatbutton.FlatButton>
-
-
 
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.ashlikun.loadswitch;
+package com.ashlikun.loadswitch
 
 /**
  * 作者　　: 李坤
@@ -7,12 +7,10 @@ package com.ashlikun.loadswitch;
  *
  * 功能介绍：按钮点击时的回调
  */
-
-
-public interface OnLoadSwitchClick {
+interface OnLoadSwitchClick {
     //数据加载失败点击重新加载
-    void onRetryClick(ContextData data);
+    fun onRetryClick(data: ContextData)
 
     //数据为空点击重新加载
-    void onEmptyClick(ContextData data);
+    fun onEmptyClick(data: ContextData)
 }

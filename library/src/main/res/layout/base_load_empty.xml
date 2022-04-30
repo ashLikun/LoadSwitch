@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="空空如也"
+        android:text="@string/loadswitch_empty_text"
         android:textColor="@color/load_and_retry_text_color"
         android:visibility="gone" />
 
@@ -29,7 +29,7 @@
         android:layout_height="32dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="点击重试"
+        android:text="@string/loadswitch_button"
         android:textColor="@color/load_and_retry_button_color"
         android:textSize="14dp"
         app:colorNormal="#00000000"
