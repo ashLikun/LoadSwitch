@@ -45,8 +45,10 @@ class LoadSwitchLayou @JvmOverloads constructor(context: Context, attrs: Attribu
                     //ConstraintLayout.LayoutParams 的 widget对象不能复制，否则会公用同一个
                     val widget = params.javaClass.getDeclaredField("widget")
                     widget.isAccessible = true
-                    //设置一个默认的
-                    widget[params] = ConstraintWidget()
+                    //设置一个默认的,并且复制属性
+                    widget[params] = ConstraintWidget().apply {
+                        copy(contentParamsConstraint.constraintWidget, hashMapOf<ConstraintWidget, ConstraintWidget>())
+                    }
                 } catch (e: NoSuchFieldException) {
                     e.printStackTrace()
                     throw RuntimeException(e)
@@ -55,7 +57,7 @@ class LoadSwitchLayou @JvmOverloads constructor(context: Context, attrs: Attribu
                     throw RuntimeException(e)
                 }
             }
-            setLayoutParams(params)
+            layoutParams = params
             targetContext.parentView.addView(this, targetContext.childIndex + 1, params)
         } else {
             isConstraintLayout = false
@@ -142,6 +144,7 @@ class LoadSwitchLayou @JvmOverloads constructor(context: Context, attrs: Attribu
 
     fun addOtherView(view: View): View {
         removeView(view)
+        (view.parent as? ViewGroup)?.removeView(view)
         addView(view)
         return view
     }

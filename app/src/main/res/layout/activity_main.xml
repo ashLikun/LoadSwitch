@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -29,12 +29,11 @@
     <View
         android:id="@+id/twoRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="#aabb11"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_weight="289"
-        app:layout_constraintLeft_toRightOf="@+id/oneRecyclerView"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"></View>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
