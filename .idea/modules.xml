@@ -4,7 +4,13 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LoadSwitch.iml" filepath="$PROJECT_DIR$/LoadSwitch.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LoadSwitch.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LoadSwitch.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LoadSwitch.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LoadSwitch.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LoadSwitch.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LoadSwitch.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LoadSwitch.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LoadSwitch.app.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/LoadSwitch.library.iml" filepath="$PROJECT_DIR$/.idea/modules/library/LoadSwitch.library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/LoadSwitch.library.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/library/LoadSwitch.library.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/LoadSwitch.library.main.iml" filepath="$PROJECT_DIR$/.idea/modules/library/LoadSwitch.library.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/LoadSwitch.library.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/library/LoadSwitch.library.unitTest.iml" />
     </modules>
   </component>
 </project>

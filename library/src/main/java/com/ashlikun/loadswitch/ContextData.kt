@@ -35,5 +35,5 @@ open class ContextData(
     }
 
     fun getTitleErrUI() =
-        title + if (errCode != 0) "" else "\n(${LoadSwitch.app.getString(R.string.loadswitch_error_code)}:${errCode})".trimIndent()
+        title + if (errCode == 0) "" else "\n(${LoadSwitch.app.getString(R.string.loadswitch_error_code)}:${errCode})".trimIndent()
 }
