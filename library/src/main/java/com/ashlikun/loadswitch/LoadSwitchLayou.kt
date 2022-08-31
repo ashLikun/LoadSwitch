@@ -37,7 +37,7 @@ class LoadSwitchLayou @JvmOverloads constructor(context: Context, attrs: Attribu
         if (targetContext.parentView is ConstraintLayout) {
             isConstraintLayout = true
 
-            //复制Content的LayoutParams
+            //复制Content的LayoutParams,这里要定义类型，不然初始化可能调用错了构造方法
             val contentParamsConstraint: ConstraintLayout.LayoutParams = contentParams as ConstraintLayout.LayoutParams
             val params = ConstraintLayout.LayoutParams(contentParamsConstraint)
             if (params.constraintWidget === contentParamsConstraint.constraintWidget) {
