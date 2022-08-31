@@ -33,7 +33,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation rootProject.ext.designVersion
     implementation "androidx.core:core:1.6.+"
-    implementation 'androidx.constraintlayout:constraintlayout:2+'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1+'
     implementation 'androidx.constraintlayout:constraintlayout-core:1.0.3'
     implementation 'com.github.ashLikun:CircleProgressView:2.0.1'
     implementation 'com.github.ashLikun.frame:flatbutton:3.2.3'

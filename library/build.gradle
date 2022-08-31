@@ -43,7 +43,7 @@ dependencies {
     compileOnly "androidx.core:core:1.6.+"
     compileOnly 'com.github.ashLikun:CircleProgressView:2.0.1'
     compileOnly 'com.github.ashLikun.frame:flatbutton:3.2.3'
-    compileOnly 'androidx.constraintlayout:constraintlayout:2+'
+    compileOnly 'androidx.constraintlayout:constraintlayout:2.1+'
     compileOnly 'androidx.constraintlayout:constraintlayout-core:1.0.3'
     //kotlin 协程
     compileOnly "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
